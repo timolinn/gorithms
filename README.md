@@ -2,7 +2,7 @@
 
 CS Algorithms written in Go
 
-## Data Structure
+## Data Structures
 
 + LinkedLists
 + Stacks
