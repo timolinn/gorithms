@@ -1,8 +1,8 @@
-package trees
+package datastructures
 
 // Node in a LinkedList data structure
 type Node struct {
-	Value int
+	Value interface{}
 	Next  *Node
 }
 
@@ -12,24 +12,36 @@ type LinkedList struct {
 	Tail *Node
 }
 
-// Add adds a node to the tail
-func (l *LinkedList) Add(n *Node) {
-	if l.Head == nil {
-		l.Head = n
-		return
+// NewLinkedList creates a new linkedlist
+func NewLinkedList() *LinkedList {
+	emptyNode := &Node{
+		Value: nil,
+		Next:  nil,
 	}
 
-	for {
-		if l.Head.Next == nil {
-			l.Head.Next = n
-			return
-		}
-		l.Head.Next = l.Head.Next.Next
+	return &LinkedList{
+		Head: emptyNode,
+		Tail: emptyNode,
 	}
 }
 
+// Add adds a node to the tail
+func (l *LinkedList) Add(n interface{}) {
+	node := &Node{n, nil}
+	if l.Head.Value == nil {
+		l.Head = node
+		return
+	}
+
+	if l.Head.Next == nil {
+		l.Head.Next = node
+	}
+	l.Tail.Next = node
+	l.Tail = l.Tail.Next
+}
+
 // Search searches the linkedlist
-func (l *LinkedList) Search(value int) *Node {
+func (l *LinkedList) Search(value interface{}) *Node {
 	if l.Head.Value == value {
 		return l.Head
 	}

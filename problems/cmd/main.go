@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
-	fmt.Println(problems.FindAllPerm("abc", []string{}))
-	// fmt.Println(problems.Atoi("-129"))
+	fmt.Println(problems.ReverseInts([]int{4, 2, 5, 6, 8, 9}))
+	fmt.Println(problems.ReverseStrings([]string{"Manwe", "Ulmo", "Yavanna", "Este", "Tulkas"}))
+	fmt.Println(problems.Atoi("-129"))
 }

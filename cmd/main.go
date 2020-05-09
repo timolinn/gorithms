@@ -3,38 +3,33 @@ package main
 import (
 	"fmt"
 
-	"github.com/timolinn/gorithms/trees"
+	"github.com/timolinn/gorithms/datastructures"
+
+	"github.com/timolinn/gorithms/datastructures/trees"
 )
 
 var left *trees.TreeNode
 var right *trees.TreeNode
 
 func main() {
-	lnkdlst := trees.LinkedList{
-		Head: &trees.Node{
-			Value: 3,
-		},
-	}
-	five := trees.Node{
-		Value: 5,
-		Next: &trees.Node{
-			Value: 7,
-		},
-	}
-	lnkdlst.Add(&five)
+	// lnkdlst := datastructures.NewLinkedList()
+	// lnkdlst.Add(3)
+	// lnkdlst.Add(5)
+	// lnkdlst.Add(7)
+	// lnkdlst.Add(8)
 	// fmt.Println(lnkdlst.Head.Next.Next)
-	// fmt.Println(lnkdlst.Search(7).Value)
+	// fmt.Println(lnkdlst.Tail)
 
-	bst := trees.BinaryTree{}
-	bst.Insert(&trees.TreeNode{5, nil, nil})
-	bst.Insert(&trees.TreeNode{3, nil, nil})
-	bst.Insert(&trees.TreeNode{7, nil, nil})
-	bst.Insert(&trees.TreeNode{2, nil, nil})
-	bst.Insert(&trees.TreeNode{1, nil, nil})
-	bst.Insert(&trees.TreeNode{10, nil, nil})
-	bst.Insert(&trees.TreeNode{17, nil, nil})
-	bst.Insert(&trees.TreeNode{3, nil, nil})
-	bst.Insert(&trees.TreeNode{7, nil, nil})
+	// bst := trees.BinaryTree{}
+	// bst.Insert(&trees.TreeNode{5, nil, nil})
+	// bst.Insert(&trees.TreeNode{3, nil, nil})
+	// bst.Insert(&trees.TreeNode{7, nil, nil})
+	// bst.Insert(&trees.TreeNode{2, nil, nil})
+	// bst.Insert(&trees.TreeNode{1, nil, nil})
+	// bst.Insert(&trees.TreeNode{10, nil, nil})
+	// bst.Insert(&trees.TreeNode{17, nil, nil})
+	// bst.Insert(&trees.TreeNode{3, nil, nil})
+	// bst.Insert(&trees.TreeNode{7, nil, nil})
 	// fmt.Println(bst.InOrderTraversal())
 	// fmt.Println(bst.Root.Left)
 	// fmt.Println(bst.Root.Right)
@@ -54,10 +49,22 @@ func main() {
 	// bst.Remove(&trees.TreeNode{7, nil, nil})
 	// fmt.Println(bst.InOrderTraversal())
 	// fmt.Println(bst.Search(3))
-	x := make([][]byte, 3)
-	// x[0] = []byte{1, 2}
-	// x[1] = []byte{1, 2, 3, 4}
-	// fmt.Println(x[0])
-	// fmt.Println(x[1])
-	fmt.Println(x)
+	// ht := datastructures.NewHashTable()
+	// ht = ht.Put("1", 1)
+	// ht = ht.Put("two", 2)
+	// ht = ht.Put("1", 5)
+	// fmt.Println(ht.Get("1"))
+	// fmt.Println(ht.Get("two"))
+
+	// var sb strings.Builder
+	// for _, c := range []string{"hello", "world", "out", "there"} {
+	// 	sb.WriteString(" ")
+	// 	sb.WriteString(c)
+	// }
+	var sb datastructures.StringBuilder
+	for _, c := range []string{"hello", "world", "out", "there"} {
+		sb.WriteString(" ")
+		sb.WriteString(c)
+	}
+	fmt.Println(sb.String())
 }
