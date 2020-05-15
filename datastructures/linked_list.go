@@ -1,5 +1,9 @@
 package datastructures
 
+import (
+	"fmt"
+)
+
 // Node in a LinkedList data structure
 type Node struct {
 	Value interface{}
@@ -57,6 +61,33 @@ func (l *LinkedList) Search(value interface{}) *Node {
 		lv.Next = lv.Next.Next
 	}
 	return nil
+}
+
+// Print outputs all the values in the nodes
+func (l *LinkedList) Print() {
+	n := l.Head
+	for n != nil {
+		fmt.Println(n.Value)
+		n = n.Next
+	}
+}
+
+func (l *LinkedList) RemoveDuplicates() {
+	cur := l.Head
+	prev := l.Head
+	values := make(map[int]bool)
+	for cur != nil {
+		if _, ok := values[cur.Value.(int)]; !ok {
+			values[cur.Value.(int)] = true
+		} else {
+			// duplicate found
+			prev.Next = cur.Next
+			cur = prev.Next
+			continue
+		}
+		prev = cur
+		cur = cur.Next
+	}
 }
 
 // import (

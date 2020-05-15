@@ -1,19 +1,31 @@
 package trees
 
-// TreeNode represents one node in a tree
-type TreeNode struct {
+import (
+	"github.com/timolinn/gorithms/datastructures"
+)
+
+// BSTreeNode represents one node in a tree
+type BSTreeNode struct {
 	Value int
-	Left  *TreeNode
-	Right *TreeNode
+	Left  *BSTreeNode
+	Right *BSTreeNode
 }
 
 type BinaryTree struct {
-	Root *TreeNode
+	Root *BSTreeNode
 }
 
 var items []int
 
-func (bst *BinaryTree) Insert(e *TreeNode) *TreeNode {
+func NewBSTreeNode(value int) *BSTreeNode {
+	return &BSTreeNode{
+		Value: value,
+		Left:  nil,
+		Right: nil,
+	}
+}
+
+func (bst *BinaryTree) Insert(e *BSTreeNode) *BSTreeNode {
 	if bst.Root == nil {
 		bst.Root = e
 		return e
@@ -26,7 +38,7 @@ func (bst *BinaryTree) Insert(e *TreeNode) *TreeNode {
 }
 
 // InsertLeft inserts a new node left of at
-func (bst BinaryTree) InsertLeft(n, at *TreeNode) *TreeNode {
+func (bst BinaryTree) InsertLeft(n, at *BSTreeNode) *BSTreeNode {
 	if at.Left == nil {
 		at.Left = n
 		return at.Left
@@ -38,7 +50,7 @@ func (bst BinaryTree) InsertLeft(n, at *TreeNode) *TreeNode {
 }
 
 // InsertRight inserts a new node right of at
-func (bst BinaryTree) InsertRight(n, at *TreeNode) *TreeNode {
+func (bst BinaryTree) InsertRight(n, at *BSTreeNode) *BSTreeNode {
 	if at.Right == nil {
 		at.Right = n
 		return at.Right
@@ -63,7 +75,7 @@ func (bst *BinaryTree) InOrderTraversalC(res chan int) {
 	close(res)
 }
 
-func inOrderTreeTraversal(n *TreeNode, f func(int)) {
+func inOrderTreeTraversal(n *BSTreeNode, f func(int)) {
 	if n == nil {
 		return
 	}
@@ -72,7 +84,7 @@ func inOrderTreeTraversal(n *TreeNode, f func(int)) {
 	inOrderTreeTraversal(n.Right, f)
 }
 
-func inOrderTreeTraversalCh(n *TreeNode, ch chan int) {
+func inOrderTreeTraversalCh(n *BSTreeNode, ch chan int) {
 	if n == nil {
 		return
 	}
@@ -90,7 +102,7 @@ func (bst *BinaryTree) PreOrderTraversal() []int {
 	return items
 }
 
-func preOrderTraversal(n *TreeNode, f func(int)) {
+func preOrderTraversal(n *BSTreeNode, f func(int)) {
 	if n == nil {
 		return
 	}
@@ -108,7 +120,7 @@ func (bst *BinaryTree) PostOrderTraversal() []int {
 	return items
 }
 
-func postOrderTraversal(n *TreeNode, f func(int)) {
+func postOrderTraversal(n *BSTreeNode, f func(int)) {
 	if n == nil {
 		return
 	}
@@ -162,11 +174,11 @@ func Compare(b1, b2 *BinaryTree) bool {
 }
 
 // Remove removes n from bst
-func (bst *BinaryTree) Remove(n *TreeNode) *TreeNode {
+func (bst *BinaryTree) Remove(n *BSTreeNode) *BSTreeNode {
 	return remove(bst.Root, n)
 }
 
-func remove(root, n *TreeNode) *TreeNode {
+func remove(root, n *BSTreeNode) *BSTreeNode {
 	if n == nil {
 		return nil
 	}
@@ -187,7 +199,7 @@ func remove(root, n *TreeNode) *TreeNode {
 	return root
 }
 
-func swap(n, with *TreeNode) {
+func swap(n, with *BSTreeNode) {
 	if n == nil {
 		n = with
 		return
@@ -207,14 +219,14 @@ func swap(n, with *TreeNode) {
 
 // Search returns a node with val and the parent
 // to that node
-func (bst *BinaryTree) Search(val int) (*TreeNode, *TreeNode) {
+func (bst *BinaryTree) Search(val int) (*BSTreeNode, *BSTreeNode) {
 	if val < 0 {
 		return nil, nil
 	}
 	return search(bst.Root, bst.Root, val)
 }
 
-func search(root, parent *TreeNode, val int) (*TreeNode, *TreeNode) {
+func search(root, parent *BSTreeNode, val int) (*BSTreeNode, *BSTreeNode) {
 	if root.Value == val {
 		return root, parent
 	}
@@ -224,4 +236,23 @@ func search(root, parent *TreeNode, val int) (*TreeNode, *TreeNode) {
 	}
 	// go right
 	return search(root.Right, root, val)
+}
+
+func BSTBreadthFirstSearch(bst *BinaryTree) []int {
+	var res []int
+	queue := datastructures.Queue{}
+	queue.Enqueue(bst.Root)
+
+	for !queue.IsEmpty() {
+		n, _ := queue.Dequeue()
+		node := n.(*BSTreeNode)
+		res = append(res, node.Value)
+		if node.Left != nil {
+			queue.Enqueue(node.Left)
+		}
+		if node.Right != nil {
+			queue.Enqueue(node.Right)
+		}
+	}
+	return res
 }
