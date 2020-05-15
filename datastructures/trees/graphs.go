@@ -160,13 +160,14 @@ func hasPathBFS(source, destination *GraphNode) bool {
 	for !queue.IsEmpty() {
 		v, _ := queue.Dequeue()
 		vertex := v.(*GraphNode)
-		if vertex == destination {
-			return true
-		}
 		if _, ok := visited[vertex.ID]; ok {
 			continue
 		}
 		visited[vertex.ID] = struct{}{}
+
+		if vertex == destination {
+			return true
+		}
 
 		for _, child := range vertex.adjacent {
 			queue.Enqueue(child)
