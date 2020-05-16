@@ -45,7 +45,8 @@ func Anagram2(w1, w2 string) bool {
 	return true
 }
 
-func reverse(text string) string {
+// Reverse reverses a string
+func Reverse(text string) string {
 	textSlice := strings.Split(text, "")
 	first := 0
 	last := len(text) - 1
