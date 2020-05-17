@@ -21,7 +21,6 @@ func SetBit(number, bitposition int) int {
 	return number | (1 << bitposition)
 }
 
-// updateBit,
 // countSetBits,
 // bitsDiff,
 // bitLength

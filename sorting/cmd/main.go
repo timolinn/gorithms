@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	list := []int{2, 1, 3, 5, 4, 7, 6, 30, 12, 20, 21, 11, 29, 30, 50, 44, 43, 42, 98}
-	sorting.BubbleSortInt(list)
-	fmt.Println(list)
+	list := []int{2, 1, 12, 5, 7, 3, 14, 15, 18}
+	fmt.Println(sorting.MergeSort(list))
+	fmt.Println(sorting.QuickSort(list))
 }
