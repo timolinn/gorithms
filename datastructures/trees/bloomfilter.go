@@ -12,17 +12,17 @@ var hasher = sha1.New()
 const ARRAY_SIZE = 100
 
 type BloomFilter struct {
-	filter [ARRAY_SIZE]struct{}
+	bitfield [ARRAY_SIZE]struct{}
 }
 
 func (bf *BloomFilter) Exists(value string) bool {
 	h := hashPosition(value)
-	return bf.filter[h] == struct{}{}
+	return bf.bitfield[h] == struct{}{}
 }
 
 func (bf *BloomFilter) Set(value string) {
 	h := hashPosition(value)
-	bf.filter[h] = struct{}{}
+	bf.bitfield[h] = struct{}{}
 }
 
 func createHash(h hash.Hash, value string) (int, error) {
