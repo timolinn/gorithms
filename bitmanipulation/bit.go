@@ -37,3 +37,11 @@ func UpdateBit(number, bitposition int, bitValue BitValue) int {
 	number = number & mask
 	return number | (int(bitValue) << bitposition)
 }
+
+func HasBit(number, bitposition int) bool {
+	return (number & (1 << bitposition)) > 0
+}
+
+func HasBit2(number, bitposition int) bool {
+	return GetBit(number, bitposition) > 0
+}

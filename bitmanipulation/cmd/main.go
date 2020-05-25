@@ -1,15 +1,15 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/teivah/bitvector"
+	"github.com/timolinn/gorithms/bitmanipulation"
 )
 
-var bv bitvector.Len8
-
 func main() {
-	fmt.Println('z' - 'a')
-	fmt.Println(0 & (1 << ('z' - 'a')))
-	fmt.Println(int([]byte("129")[0]))
+	println(bitmanipulation.GetBit(16, 3))
+	println(bitmanipulation.SetBit(16, 3))
+	println(bitmanipulation.ClearBit(24, 3))
+	println(bitmanipulation.UpdateBit(24, 3, bitmanipulation.Falsy))
+	println(bitmanipulation.UpdateBit(16, 3, bitmanipulation.Truthy))
+	println(bitmanipulation.HasBit(24, 4))
+	println(bitmanipulation.HasBit2(24, 4))
 }
