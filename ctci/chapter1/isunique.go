@@ -21,7 +21,7 @@ func IsUniqueWithBitVector(s string) bool {
 	bt := int64(0)
 	for _, charCode := range s {
 		// get te position of the ASCII char between 1 - 26
-		val := charCode - 'A'
+		val := charCode - 'a'
 		if (bt & (1 << val)) > 0 {
 			return false
 		}

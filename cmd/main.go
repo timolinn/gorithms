@@ -12,7 +12,10 @@ func checkError(err error) {
 	}
 }
 
+/*
 func main() {
+	trace.Start(os.Stdout)
+	defer trace.Stop()
 	graph := trees.NewGraph(trees.Directed)
 	v0 := graph.AddNode(1)
 	v1 := graph.AddNode(2)
@@ -31,22 +34,22 @@ func main() {
 	// fmt.Println(graph.HasPathDFS(v3.ID, v0.ID))
 	// fmt.Println(graph.HasPathDFS(v2.ID, v1.ID))
 	// fmt.Println(graph.HasPathDFS(v3.ID, v1.ID))
-	fmt.Println(graph.HasPathBFS(v3.ID, v2.ID))
-	fmt.Println("===========================================")
-	fmt.Println(graph.HasPathDFS(v1.ID, v0.ID))
-	fmt.Println(graph.HasPathDFS(v0.ID, v1.ID))
-	fmt.Println(graph.HasPathDFS(v0.ID, v3.ID))
-	fmt.Println(graph.HasPathDFS(v1.ID, v3.ID))
-	fmt.Println(graph.HasPathDFS(v1.ID, v2.ID))
-	fmt.Println(graph.HasPathDFS(v1.ID, v0.ID))
-	fmt.Println(graph.HasPathDFS(v3.ID, v0.ID))
-	fmt.Println(graph.HasPathDFS(v3.ID, v1.ID))
-	// fmt.Println(graph.HasPathBFS(v4.ID, v1.ID))
-	fmt.Println("===========================================")
-	fmt.Println(graph.Contains(6))
+	// fmt.Println(graph.HasPathBFS(v3.ID, v2.ID))
+	// fmt.Println("===========================================")
+	// fmt.Println(graph.HasPathDFS(v1.ID, v0.ID))
+	// fmt.Println(graph.HasPathDFS(v0.ID, v1.ID))
+	// fmt.Println(graph.HasPathDFS(v0.ID, v3.ID))
+	// fmt.Println(graph.HasPathDFS(v1.ID, v3.ID))
+	// fmt.Println(graph.HasPathDFS(v1.ID, v2.ID))
+	// fmt.Println(graph.HasPathDFS(v1.ID, v0.ID))
+	// fmt.Println(graph.HasPathDFS(v3.ID, v0.ID))
+	// fmt.Println(graph.HasPathDFS(v3.ID, v1.ID))
+	// // fmt.Println(graph.HasPathBFS(v4.ID, v1.ID))
+	// fmt.Println("===========================================")
+	// fmt.Println(graph.Contains(6))
 }
+*/
 
-/*
 func main() {
 	bst := trees.BinaryTree{}
 	bst.Insert(trees.NewBSTreeNode(4))
@@ -56,8 +59,9 @@ func main() {
 	bst.Insert(trees.NewBSTreeNode(0))
 	bst.Insert(trees.NewBSTreeNode(9))
 	fmt.Println(trees.BSTBreadthFirstSearch(&bst))
+	fmt.Println(bst.Sum())
 }
-*/
+
 /*
 func main() {
 	queue := datastructures.Queue{}

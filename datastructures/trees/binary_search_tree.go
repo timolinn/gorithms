@@ -25,6 +25,22 @@ func NewBSTreeNode(value int) *BSTreeNode {
 	}
 }
 
+func (bst *BinaryTree) Sum() int {
+	if bst == nil {
+		return 0
+	}
+
+	return bst.Root.Value + bst.Root.Left.Sum() + bst.Root.Right.Sum()
+}
+
+func (bst *BSTreeNode) Sum() int {
+	if bst == nil {
+		return 0
+	}
+
+	return bst.Value + bst.Left.Sum() + bst.Right.Sum()
+}
+
 func (bst *BinaryTree) Insert(e *BSTreeNode) *BSTreeNode {
 	if bst.Root == nil {
 		bst.Root = e
